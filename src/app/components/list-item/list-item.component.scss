@@ -1,0 +1,13 @@
+.audio-actions {
+    display: flex;
+    flex-direction: column;
+
+    .mdc-button {
+        text-align: left;
+        height: 56px;
+        justify-content: flex-start;
+        gap: 24px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+    }
+}

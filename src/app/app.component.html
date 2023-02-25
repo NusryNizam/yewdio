@@ -1,0 +1,32 @@
+<div class="main-container">
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">
+
+    <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" class="toolbar__link">
+      <button mat-button class="toolbar__button">
+        <mat-icon>home</mat-icon><span class="big-screen">Home</span>
+      </button>
+    </a>
+
+    <a routerLink="/search" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button">
+        <mat-icon>search</mat-icon><span class="big-screen">Search</span>
+      </button>
+    </a>
+
+    <a routerLink="/playlists" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button">
+        <mat-icon>playlist_play</mat-icon><span class="big-screen">Playlists</span>
+      </button>
+    </a>
+
+    <a routerLink="/settings" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button">
+        <mat-icon>settings</mat-icon><span class="big-screen">Settings</span>
+      </button>
+    </a>
+
+  </div>
+  <router-outlet style="display: none;"></router-outlet>
+  <app-player class="minimised" id="player"></app-player>
+</div>

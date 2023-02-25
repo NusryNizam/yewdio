@@ -1,0 +1,21 @@
+<input type="text" name="search" id="search" class="search" placeholder="Type to search or create playlist" [(ngModel)]="searchPlaylistName" (keyup)="filterPlaylist($event)">
+<ul class="card-container">
+    <li class="card" *ngFor="let playlist of playlists" (click)="addAudioToPlaylist(audio, playlist.name)">
+        <ng-container *ngIf="audio.type == 'video'">
+            <div class="image-container">
+                <!-- <img class="card-image" [src]="playlist.data.videoThumbnails[5].url" [alt]="audio.title"> -->
+                <!-- <div class="duration">{{ audio.lengthSeconds/60 | number:'2.0-0'}}:{{audio.lengthSeconds%60 | number:
+                    '2.0-0' }}</div> -->
+            </div>
+            <div class="card-content">
+                <p class="title"><strong>{{ playlist.name | titlecase }}</strong></p>
+                <p class="channel">{{ playlist.data.length }} items</p>
+                <!-- <p>{{ }}</p> -->
+                <!-- <p class="year"><strong>{{ audio.length }}</strong></p> -->
+            </div>
+        </ng-container>
+    </li>
+</ul>
+<button *ngIf="this.playlists.length === 0" mat-stroked-button (click)="createPlaylist()">
+    <mat-icon>add_circle</mat-icon>
+    Create Playlist "{{ searchPlaylistName }}"</button>

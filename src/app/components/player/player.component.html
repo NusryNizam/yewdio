@@ -1,0 +1,48 @@
+<div [class]="isMinimised ? 'minimised container' : 'container'" #playerRef id="player">
+    <!-- dsfdtklsfj -->
+    <button class="hideWhenMaximised" mat-icon-button (click)="togglePlayerState()">
+        <mat-icon>expand_less</mat-icon>
+    </button>
+    <div class="album-art">
+        <img class="" [src]="selectedAudio.videoThumbnails.length ? selectedAudio.videoThumbnails[3].url : ''"
+            [alt]="selectedAudio.title">
+    </div>
+
+    <div class="audio-info">
+        <p class=""><strong>{{ selectedAudio.title || 'Song Title'}}</strong></p>
+        <p class="">{{ selectedAudio.author || 'Author' }}</p>
+    </div>
+    <progress id="progress" class="progress" [value]="currentTime.getValue()"
+        [max]="selectedAudio.lengthSeconds"></progress>
+    <p class="duration">
+        {{(this.currentTime.getValue()/60) | number: '2.0-0' }}:{{(this.currentTime.getValue()%60) | number:'2.0-0' }}
+        /
+        {{(selectedAudio.lengthSeconds/60) | number: '2.0-0' }}:{{(selectedAudio.lengthSeconds%60) | number:'2.0-0' }}
+    </p>
+
+    <div class="controls">
+        <button mat-icon-button>
+            <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button id='toggle-play' mat-fab (click)="toggleAudio()" [disabled]="player.readyState < 3">
+            <mat-icon *ngIf="!isPlaying.getValue()">play_arrow</mat-icon>
+            <mat-icon *ngIf="isPlaying.getValue()">pause</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>skip_next</mat-icon>
+        </button>
+    </div>
+
+    <div class="controls">
+        <button mat-button>
+            <mat-icon>playlist_play</mat-icon>
+            View Queue</button>
+    </div>
+    <button class="hideWhenMinimised" style=" margin-top: auto;" mat-icon-button (click)="togglePlayerState()">
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <button id='toggle-play-minimised' mat-icon-button (click)="toggleAudio()" [disabled]="player.readyState < 3">
+        <mat-icon *ngIf="!isPlaying.getValue()">play_arrow</mat-icon>
+        <mat-icon *ngIf="isPlaying.getValue()">pause</mat-icon>
+    </button>
+</div>

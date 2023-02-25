@@ -1,0 +1,40 @@
+<li class="card" *ngFor="let audio of audioList$ | async" [title]="audio.title" (click)="getVideoDetails(audio.videoId)"
+    (contextmenu)="rightClick($event, audio)">
+    <ng-container *ngIf="audio.type == 'video'">
+        <div class="image-container">
+            <img class="card-image" [src]="audio.videoThumbnails[5].url" [alt]="audio.title">
+            <div class="duration">{{ audio.lengthSeconds/60 | number:'2.0-0'}}:{{audio.lengthSeconds%60 | number:
+                '2.0-0' }}</div>
+        </div>
+        <div class="card-content">
+            <p class="title"><strong>{{ audio.title.slice(0, 40) }}...</strong></p>
+            <p class="channel">{{ audio.author.slice(0, 40) }}...</p>
+            <!-- <p>{{ }}</p> -->
+            <!-- <p class="year"><strong>{{ audio.length }}</strong></p> -->
+        </div>
+    </ng-container>
+
+</li>
+<ul class="card-container" *ngIf="!isEmpty">
+    <li class="card">
+        <ng-container *ngIf="data.type == 'video'">
+            <div class="image-container">
+                <img class="card-image" [src]="data.videoThumbnails[5].url" [alt]="data.title">
+                <div class="duration">{{ data.lengthSeconds/60 | number:'2.0-0'}}:{{data.lengthSeconds%60 | number:
+                    '2.0-0' }}</div>
+            </div>
+            <div class="card-content">
+                <p class="title"><strong>{{ data.title.slice(0, 40) }}...</strong></p>
+                <p class="channel">{{ data.author.slice(0, 40) }}...</p>
+                <!-- <p>{{ }}</p> -->
+                <!-- <p class="year"><strong>{{ audio.length }}</strong></p> -->
+            </div>
+        </ng-container>
+    </li>
+</ul>
+<div class="audio-actions" *ngIf="!isEmpty">
+    <button mat-flat-button (click)="playSelected(data.videoId)"><mat-icon>play_arrow</mat-icon>Play</button>
+    <button mat-flat-button (click)="addToPlaylist(data)"><mat-icon>playlist_add</mat-icon>Add to Playlist</button>
+    <button mat-flat-button (click)="closeSheet()"><mat-icon>close</mat-icon>Close</button>
+
+</div>

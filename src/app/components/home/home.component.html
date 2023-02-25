@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>Recently Played</h1>
+    <ul class="card-container">
+        <!-- <li class="card" *ngFor="let recentAudio of recents" (click)="playAudio(recentAudio)">
+            <div class="image-container">
+                <img class="card-image" [src]="recentAudio.albumArt" alt="Album art">
+                <p class="duration"><strong>{{ recentAudio.lengthSeconds/60 | number: '2.0-0'}}:{{ recentAudio.lengthSeconds%60 | number: '2.0-0'}}</strong></p>
+            </div>
+            <div class="card-content">
+                <p class="title"><strong>{{ recentAudio.title}}</strong></p>
+                <p class="channel">{{ recentAudio.author }}</p>
+
+            </div>
+        </li> -->
+        <!-- <li class="card">
+            <div class="image-container">
+                <img class="card-image" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+            </div>
+            <div class="card-content">
+                <p class="title"><strong>The Script - Hall of Fame</strong></p>
+                <p class="channel">The Script</p>
+                <p class="year">2022 <strong>· 3:16</strong></p>
+
+            </div>
+        </li> -->
+    </ul>
+
+    <div style="height:24px"></div>
+    <h1>Latest Playlists</h1>
+    <ul class="card-container">
+        <li class="card">
+            <div class="image-container image-container-playlist">
+                <img class="card-image image-3" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+                <img class="card-image image-2" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+                <img class="card-image image-1" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+            </div>
+            <div class="card-content">
+                <p class="name"><strong>Tamil</strong></p>
+                <p class="channel">53 Items</p>
+            </div>
+        </li>
+        <li class="card">
+            <div class="image-container image-container-playlist">
+                <img class="card-image image-3" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+                <img class="card-image image-2" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+                <img class="card-image image-1" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
+            </div>
+            <div class="card-content">
+                <p class="name"><strong>English</strong></p>
+                <p class="channel">23 Items</p>
+            </div>
+        </li>
+    </ul>
+</div>
