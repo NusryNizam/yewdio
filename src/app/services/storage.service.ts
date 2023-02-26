@@ -14,7 +14,7 @@ export class StorageService {
     for (let i = 0, l = localStorage.length; i < l; i++) {
       let playlistName: string = localStorage.key(i) as string
       let playlistValues: AudioInterface[] = JSON.parse(localStorage[playlistName as string])
-      console.log(playlistValues);
+      // console.log(playlistValues);
 
       playlists.push({ name: playlistName, data: playlistValues })
     }

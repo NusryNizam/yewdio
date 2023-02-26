@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject, fromEvent, interval, map, Subscription } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, first, fromEvent, interval, last, map, Subscription } from 'rxjs';
 
 import { QueueService } from 'src/app/services/queue.service';
 // import { StoreService } from 'src/app/services/store.service';
@@ -37,7 +37,9 @@ export class PlayerComponent {
       }
     })
 
-    this.queue.listenToPlayStatus().subscribe(status => {
+    this.queue.listenToPlayStatus().pipe(
+      distinctUntilChanged()
+    ).subscribe(status => {
       console.log('listeining to play status', status)
       this.isPlaying.next(status)
     })
@@ -62,7 +64,7 @@ export class PlayerComponent {
 
     fromEvent(this.player, 'ended')
     .subscribe(() => {
-      
+      this.queue.nextQueuePos()
     })
   }
 
@@ -106,6 +108,9 @@ export class PlayerComponent {
     this.stopEmitting();
   }
 
+  next() {
+    this.queue.nextQueuePos()
+  }
 
   startEmitting() {
     // this.timeSub

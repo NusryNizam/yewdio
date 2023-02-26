@@ -15,14 +15,14 @@
         </li>
     </ul> -->
     <ul class="card-container">
-        <li class="card" *ngFor="let item of playlists" (click)="addToQueue(item.name)" matRipple>
+        <li class="card" *ngFor="let item of playlists" (click)="addToQueue(item.name, item.data)" matRipple>
             <div class="image-container image-container-playlist">
                 <img class="card-image image-3" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
                 <img class="card-image image-2" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
                 <img class="card-image image-1" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
             </div>
             <div class="card-content">
-                <p class="name"><strong>{{ item.name }}</strong></p>
+                <p class="name"><strong>{{ item.name | titlecase }}</strong></p>
                 <p class="channel">{{ item.data.length }} Items</p>
             </div>
         </li>

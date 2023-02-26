@@ -28,7 +28,7 @@
             <mat-icon *ngIf="!isPlaying.getValue()">play_arrow</mat-icon>
             <mat-icon *ngIf="isPlaying.getValue()">pause</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="next()">
             <mat-icon>skip_next</mat-icon>
         </button>
     </div>
