@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { concatMap, distinctUntilChanged, first, map, mergeMap, of, switchMap } from 'rxjs';
 import AudioInterface from 'src/app/interfaces/audio.interface';
 import { DataService } from 'src/app/services/data.service';
@@ -15,6 +15,8 @@ export class PlaylistsComponent {
 
   playlists: Array<{name: string, data: AudioInterface[]}> = []
   queuePosition = 0
+
+  @Input() verb = ''
 
   constructor(private storageService: StorageService, 
     private queueService: QueueService,

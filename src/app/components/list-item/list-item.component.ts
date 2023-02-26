@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import AudioInterface from 'src/app/interfaces/audio.interface';
 import { DataService } from 'src/app/services/data.service';
 import { QueueService } from 'src/app/services/queue.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { DummyComponent } from '../dummy/dummy.component';
 import { PlaylistSheetComponent } from '../playlist-sheet/playlist-sheet.component';
 
@@ -21,6 +22,7 @@ export class ListItemComponent {
   constructor(private dataService: DataService,
     private queueService: QueueService,
     private matSheet: MatBottomSheet,
+    private storageService: StorageService,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: AudioInterface
   ) {
     this.isEmpty = Object.keys(data).length > 0 ? false : true 
@@ -28,9 +30,12 @@ export class ListItemComponent {
 
 
   getVideoDetails(videoId: string) {
-    this.dataService.getVideoDetails(videoId)
+    this.queueService.removeQueue()
+    this.queueService.resetQueuePos()
+    // this.dataService.getVideoDetails(videoId)
     this.dataService.getVideoDetails(videoId).subscribe(result => {
       this.queueService.setAudio(result)
+      this.storageService.addToRecents(result)
     })
   }
 

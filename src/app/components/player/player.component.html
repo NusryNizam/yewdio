@@ -1,6 +1,6 @@
 <div [class]="isMinimised ? 'minimised container' : 'container'" #playerRef id="player">
     <!-- dsfdtklsfj -->
-    <button class="hideWhenMaximised" mat-icon-button (click)="togglePlayerState()">
+    <button class="hideWhenMaximised" mat-icon-button (click)="togglePlayerState()" [disabled]="player.readyState < 3">
         <mat-icon>expand_less</mat-icon>
     </button>
     <div class="album-art">
@@ -21,20 +21,20 @@
     </p>
 
     <div class="controls">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="previous()" [disabled]="!isPreviousSong">
             <mat-icon>skip_previous</mat-icon>
         </button>
         <button id='toggle-play' mat-fab (click)="toggleAudio()" [disabled]="player.readyState < 3">
             <mat-icon *ngIf="!isPlaying.getValue()">play_arrow</mat-icon>
             <mat-icon *ngIf="isPlaying.getValue()">pause</mat-icon>
         </button>
-        <button mat-icon-button (click)="next()">
+        <button mat-icon-button (click)="next()" [disabled]="!isNextSong">
             <mat-icon>skip_next</mat-icon>
         </button>
     </div>
 
     <div class="controls">
-        <button mat-button>
+        <button mat-button (click)="showQueue()">
             <mat-icon>playlist_play</mat-icon>
             View Queue</button>
     </div>

@@ -27,7 +27,7 @@ export class QueueService {
     // this.nowPlaying$.next(details)
     // this.queueLength = details.length
     // this.dataService.getVideoDetails(details[0].videoId)
-    // this.isPlaying$.next(true)
+    // this.isPlaying$.next(true)    
     let videoIDs: string[] = []
     
     playlistData.forEach(item => {
@@ -38,12 +38,39 @@ export class QueueService {
     this.queue$.next({isActive: true, videoIDs: videoIDs})
   }
 
+  removeQueue() {
+    this.queue$.next({isActive: false, videoIDs: []})
+  }
+
+  isNext() {
+    if(this.queue$.getValue().videoIDs.length === 0) return false
+    return this.queue$.getValue().videoIDs.length -1 !== this.queuePosition$.getValue()
+  }
+
+  isPrevious() {
+    return this.queuePosition$.getValue() > 0
+  }
+
+  resetQueuePos() {
+    this.queuePosition$.next(0)
+  }
+
   getQueuePos() {
     return this.queuePosition$
   }
 
   nextQueuePos() {
-    this.queuePosition$.next(this.queuePosition$.getValue() + 1)
+    let currentPosition = this.queuePosition$.getValue() // One less that current position actually
+    
+    if(currentPosition + 1 < this.queue$.getValue().videoIDs.length)
+      this.queuePosition$.next(currentPosition + 1)
+  }
+
+  previousQueuePos() {
+    let currentPosition = this.queuePosition$.getValue() // One less that current position actually
+    
+    if(currentPosition !== 0)
+      this.queuePosition$.next(currentPosition - 1)
   }
 
   play(){

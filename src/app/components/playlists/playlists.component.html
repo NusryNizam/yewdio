@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Playlists</h1>
-    <input type="text" name="search" id="search" class="search" placeholder="Search your playlists">
+    <h1>{{ verb }} Playlists</h1>
+    <input *ngIf="!verb" type="text" name="search" id="search" class="search" placeholder="Search your playlists">
     <!-- <ul class="card-container">
         <li class="card">
             <div class="image-container image-container-playlist">
@@ -15,7 +15,7 @@
         </li>
     </ul> -->
     <ul class="card-container">
-        <li class="card" *ngFor="let item of playlists" (click)="addToQueue(item.name, item.data)" matRipple>
+        <li class="card" *ngFor="let item of playlists | slice: 0: verb ? 3 : playlists.length" (click)="addToQueue(item.name, item.data)" matRipple>
             <div class="image-container image-container-playlist">
                 <img class="card-image image-3" src="https://via.placeholder.com/128x72.webp" alt="placeholder">
                 <img class="card-image image-2" src="https://via.placeholder.com/128x72.webp" alt="placeholder">

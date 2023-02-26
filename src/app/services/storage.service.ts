@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import AudioInterface from '../interfaces/audio.interface';
+import DetailedAudioInterface from '../interfaces/detailed-audio.interface';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -53,6 +54,29 @@ export class StorageService {
       return false
 
     }
+  }
+
+  addToRecents(data: DetailedAudioInterface) {
+    let recents = localStorage.getItem('recents')
+    let newData = {
+      title: data.title, 
+      author: data.author,
+      length: data.lengthSeconds,
+      albumArt: data.videoThumbnails[5].url,
+      videoId: data.videoId
+    }
+    if(recents){
+      let parsed = JSON.parse(recents)
+      localStorage.setItem('recents', JSON.stringify([newData, ...parsed]))
+    }
+      else  
+      localStorage.setItem('recents', JSON.stringify([newData]))
+  }
+
+  getRecents() {
+    let recents = localStorage.getItem('recents')
+    if(recents)
+    return (JSON.parse(recents))
   }
 
   ifExists(name: string, videoId: string): boolean {
