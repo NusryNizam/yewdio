@@ -4,14 +4,18 @@ https://yewdio.netlify.app
 
 This is a work in progress ⚠️
 
+#### Works
 - Search for Youtube videos ✔️ <br>
 - Play them as Audio ✔️ <br>
 - Music player and controls ✔️ <br>
 - Add items to playlists ✔️ <br>
+
+#### To-Dos
 - Edit Playlists ❌ <br>
 - Settings ❌ <br>
 - Dark Mode ❌ <br>
 - View the current queue ❌
+- Add PWA support
 
 and more visual improvements planned.
 
