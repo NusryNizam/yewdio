@@ -12,6 +12,7 @@ This is a work in progress ⚠️
 - Dark Mode ❌ <br>
 - View the current queue ❌
 
+This is possible thanks to [Invidious](https://github.com/iv-org/invidious) API <br>
 <b>Note:</b> The playlists are stored in browser's [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 ###### This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
