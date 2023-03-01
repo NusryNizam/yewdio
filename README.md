@@ -15,7 +15,7 @@ This is a work in progress ⚠️
 - Settings ❌ <br>
 - Dark Mode ❌ <br>
 - View the current queue ❌
-- Add PWA support
+- Add PWA support ❌ <br>
 
 and more visual improvements planned.
 
