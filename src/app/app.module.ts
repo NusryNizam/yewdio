@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, isDevMode } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
@@ -17,6 +17,7 @@ import { ListItemComponent } from "./components/list-item/list-item.component";
 import { DummyComponent } from "./components/dummy/dummy.component";
 import { MAT_BOTTOM_SHEET_DATA } from "@angular/material/bottom-sheet";
 import { PlaylistSheetComponent } from "./components/playlist-sheet/playlist-sheet.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,12 @@ import { PlaylistSheetComponent } from "./components/playlist-sheet/playlist-she
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
