@@ -1,11 +1,17 @@
 {
-  "name": "yewdio",
-  "short_name": "yewdio",
+  "name": "Yewdio",
+  "short_name": "Yewdio",
+  "description": "Listen to YouTube as audio on-the-go. Save to playlists for easy playback.",
   "theme_color": "#0094ff",
-  "background_color": "#ffffff",
+  "background_color": "#0094ff",
+  "categories": ["entertainment", "music"],
+  "display_override": ["fullscreen"],
   "display": "standalone",
-  "scope": "./",
-  "start_url": "https://yewdio.netlify.app/",
+  "id": "/",
+  "launch_handler": { "client_mode": ["focus-existing", "auto"] },
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
