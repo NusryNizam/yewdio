@@ -1,21 +1,27 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { NotificationService } from '../services/notification.service';
+import { Injectable } from "@angular/core";
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpErrorResponse,
+} from "@angular/common/http";
+import { Observable, throwError, of } from "rxjs";
+import { catchError, retry } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { NotificationService } from "../services/notification.service";
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private notificationService: NotificationService) {}
 
-  constructor(private notificationService: NotificationService) { }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     let handled: boolean = false;
 
-    return next.handle(request)
-    .pipe(
+    return next.handle(request).pipe(
       retry(1),
       catchError((returnedError) => {
         let errorMessage = null;
@@ -25,7 +31,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         } else if (returnedError instanceof HttpErrorResponse) {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.error.error} - ${returnedError.error.message}`;
           handled = this.handleServerSideError(returnedError);
-        } 
+        }
 
         console.error(errorMessage ? errorMessage : returnedError);
 
@@ -39,7 +45,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           return of(returnedError);
         }
       })
-    )
+    );
   }
 
   private handleServerSideError(error: HttpErrorResponse): boolean {
@@ -47,11 +53,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     switch (error.status) {
       case 401:
-        this.notificationService.notifyUser('401 Unauthorized')
+        this.notificationService.notifyUser("401 Unauthorized");
         handled = true;
         break;
       case 403:
-        this.notificationService.notifyUser('403 Unauthorized')
+        this.notificationService.notifyUser("403 Unauthorized");
         handled = true;
         break;
     }

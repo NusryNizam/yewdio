@@ -1,180 +1,156 @@
 :host {
-    grid-column: 3/4;
-    grid-row: 1/-1;
-    background-color: #e8e8e8;
-    padding: 0;
+  grid-column: 3/4;
+  grid-row: 1/-1;
+  background-color: #e8e8e8;
+  padding: 0;
 
-    @media (max-width:1000px) {
-        grid-column: 1/-1;
-        grid-row: 2/3;
-        background-color: white;
-        border: 1px solid rgb(0 0 0 / 15%);
-    }
+  @media (max-width: 1000px) {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    background-color: white;
+    border: 1px solid rgb(0 0 0 / 15%);
+  }
 }
 
 .container {
-    padding-top: 4em;
-    position: static;
+  padding-top: 4em;
+  position: static;
 
-    @media (max-width: 1000px) {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        inset: 0 0 0 0;
-        background-color: white;
-        z-index: 2;
-    }
+  @media (max-width: 1000px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    inset: 0 0 0 0;
+    background-color: white;
+    z-index: 2;
+  }
 }
 
 .audio-info {
-    text-align: center;
-    margin: 24px;
+  text-align: center;
+  margin: 24px;
 }
 
 .progress {
-    // color: black;
-    accent-color: black;
-    color: black;
-    background-color: #d5d5d5;
-    height: 4px;
-    border-radius: 2px;
-    border: none;
-    width: 80%;
-    max-width: 280px;
-    display: block;
-    margin-inline: auto;
-    margin-bottom: 12px;
+  accent-color: black;
+  color: black;
+  background-color: #d5d5d5;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  width: 80%;
+  max-width: 280px;
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 12px;
 }
 
 #toggle-play {
-    box-shadow: none;
-    background-color: #0094FF;
-    color: #e8e8e8;
+  box-shadow: none;
+  background-color: #0094ff;
+  color: #e8e8e8;
 
-    &:disabled {
-        background-color: rgb(178, 176, 176);
-        cursor: not-allowed;
-    }
+  &:disabled {
+    background-color: rgb(178, 176, 176);
+    cursor: not-allowed;
+  }
 }
 
 .duration {
-    text-align: center;
-    margin-bottom: 48px;
-    color: grey;
+  text-align: center;
+  margin-bottom: 48px;
+  color: grey;
 }
 
 .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0px 12px;
-    margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px 12px;
+  margin-bottom: 48px;
 }
 
 #toggle-play-minimised {
-    display: none;
+  display: none;
 }
 
 .album-art {
-    overflow: hidden;
-    background-image: url('../../../assets/music.svg');
-    background-position: center;
-    background-position: center;
-    background-size: cover;
+  overflow: hidden;
+  background-image: url("../../../assets/music.svg");
+  background-position: center;
+  background-position: center;
+  background-size: cover;
+  aspect-ratio: 1;
+  max-width: 380px;
+
+  img {
+    width: 100%;
+    min-width: 240px;
     aspect-ratio: 1;
-    max-width: 380px;
-
-
-    img {
-
-        width: 100%;
-        min-width: 240px;
-        // max-width: 350px;
-        aspect-ratio: 1;
-        transform: scale(1.4);
-        object-fit: cover;
-        
-
-        // @media (min-width:1000px) {
-        // width: 100%;
-        // min-width: 240px;
-        // max-width: 350px;
-        // aspect-ratio: 1;
-        // transform: scale(1.4);
-        // object-fit: cover;
-
-
-        // }
-
-    }
+    transform: scale(1.4);
+    object-fit: cover;
+  }
 }
 
 .hideWhenMaximised {
-    display: none;
+  display: none;
 }
 
-
 @media (min-width: 1000px) {
-    .hideWhenMinimised {
-        display: none;
-    }
+  .hideWhenMinimised {
+    display: none;
+  }
 }
 
 @media (max-width: 1000px) {
-    .minimised.container {
-        height: auto;
-        display: flex;
-        gap: 8px;
-        padding: 0px 8px;
-        height: 100%;
-        align-items: center;
-        position: static;
-        flex-direction: row;
+  .minimised.container {
+    height: auto;
+    display: flex;
+    gap: 8px;
+    padding: 0px 8px;
+    height: 100%;
+    align-items: center;
+    position: static;
+    flex-direction: row;
 
-        .hideWhenMinimised {
-            display: none;
-        }
-
-        .hideWhenMaximised {
-            display: block;
-        }
-
-        * {
-            margin: 0;
-        }
-
-        .album-art {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-
-            >img {
-                // aspect-ratio: 1;
-                // overflow: hidden;
-                // object-fit: contain;
-                width: 100%;
-                height: 100%;
-                min-width: 0;
-                // max-width: none;
-            }
-        }
-
-        .audio-info {
-            text-align: left;
-        }
-
-        .progress,
-        .controls,
-        .duration {
-            display: none;
-        }
-
-        #toggle-play-minimised {
-            margin-left: auto;
-            display: block;
-        }
+    .hideWhenMinimised {
+      display: none;
     }
 
+    .hideWhenMaximised {
+      display: block;
+    }
 
+    * {
+      margin: 0;
+    }
+
+    .album-art {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+      }
+    }
+
+    .audio-info {
+      text-align: left;
+    }
+
+    .progress,
+    .controls,
+    .duration {
+      display: none;
+    }
+
+    #toggle-play-minimised {
+      margin-left: auto;
+      display: block;
+    }
+  }
 }

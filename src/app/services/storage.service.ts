@@ -1,90 +1,87 @@
-import { Injectable } from '@angular/core';
-import AudioInterface from '../interfaces/audio.interface';
-import DetailedAudioInterface from '../interfaces/detailed-audio.interface';
-import { NotificationService } from './notification.service';
+import { Injectable } from "@angular/core";
+import AudioInterface from "../interfaces/audio.interface";
+import DetailedAudioInterface from "../interfaces/detailed-audio.interface";
+import { NotificationService } from "./notification.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StorageService {
-
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService) {}
 
   getAllPlaylists() {
-    let playlists = []
+    let playlists = [];
     for (let i = 0, l = localStorage.length; i < l; i++) {
-      let playlistName: string = localStorage.key(i) as string
-      let playlistValues: AudioInterface[] = JSON.parse(localStorage[playlistName as string])
-      // console.log(playlistValues);
+      let playlistName: string = localStorage.key(i) as string;
+      if (playlistName === "recents") {
+        continue;
+      }
+      let playlistValues: AudioInterface[] = JSON.parse(
+        localStorage[playlistName as string]
+      );
 
-      playlists.push({ name: playlistName, data: playlistValues })
+      playlists.push({ name: playlistName, data: playlistValues });
     }
 
-    // console.log(playlists)
-    return playlists
-
-    // return JSON.parse(localStorage.getItem('playlists') || '')
+    return playlists;
   }
 
   getPlaylist(name: string): AudioInterface[] | null {
-    let playlist = localStorage.getItem(name)
-    return playlist ? JSON.parse(playlist) : null
+    let playlist = localStorage.getItem(name);
+    return playlist ? JSON.parse(playlist) : null;
   }
 
   createPlaylist(name: string, data?: AudioInterface) {
-    localStorage.setItem(name, data ? JSON.stringify(data) : '[]')
+    localStorage.setItem(name, data ? JSON.stringify(data) : "[]");
   }
 
   deletePlaylist(name: string) {
-    localStorage.removeItem(name)
+    localStorage.removeItem(name);
   }
 
   addToPlaylist(name: string, data: AudioInterface): boolean {
-    let playlist = this.getPlaylist(name)
+    let playlist = this.getPlaylist(name);
 
     if (playlist && !this.ifExists(name, data.videoId)) {
-      
-      localStorage.setItem(name, JSON.stringify([...playlist, data]))
-      this.notificationService.notifyUser(`Successfully added to playlist '${name}'`)
-      return true
-
+      localStorage.setItem(name, JSON.stringify([...playlist, data]));
+      this.notificationService.notifyUser(
+        `Successfully added to playlist '${name}'`
+      );
+      return true;
     } else {
-
-      this.notificationService.notifyUser(`Error: Song already exists in the playlist`)
-      return false
-
+      this.notificationService.notifyUser(
+        `Error: Song already exists in the playlist`
+      );
+      return false;
     }
   }
 
   addToRecents(data: DetailedAudioInterface) {
-    let recents = localStorage.getItem('recents')
+    let recents = localStorage.getItem("recents");
     let newData = {
-      title: data.title, 
+      title: data.title,
       author: data.author,
       length: data.lengthSeconds,
       albumArt: data.videoThumbnails[5].url,
-      videoId: data.videoId
-    }
-    if(recents){
-      let parsed = JSON.parse(recents)
-      localStorage.setItem('recents', JSON.stringify([newData, ...parsed]))
-    }
-      else  
-      localStorage.setItem('recents', JSON.stringify([newData]))
+      videoId: data.videoId,
+    };
+    if (recents) {
+      let parsed = JSON.parse(recents);
+      localStorage.setItem("recents", JSON.stringify([newData, ...parsed]));
+    } else localStorage.setItem("recents", JSON.stringify([newData]));
   }
 
   getRecents() {
-    let recents = localStorage.getItem('recents')
-    if(recents)
-    return (JSON.parse(recents))
+    let recents = localStorage.getItem("recents");
+    if (recents) return JSON.parse(recents);
   }
 
   ifExists(name: string, videoId: string): boolean {
-    let items: AudioInterface[] | null = this.getPlaylist(name)
+    let items: AudioInterface[] | null = this.getPlaylist(name);
     if (items) {
-      return items.some((item) => item.videoId === videoId)
+      return items.some((item) => item.videoId === videoId);
     } else {
-      return false
+      return false;
     }
   }
 }

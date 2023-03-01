@@ -1,9 +1,17 @@
 <div class="container">
-    <h1>Search</h1>
-    <input type="text" name="search" id="search" class="search" placeholder="Enter search term" [(ngModel)]="searchTerm" (change)="fetchResults()">
+  <h1>Search</h1>
+  <input
+    type="text"
+    name="search"
+    id="search"
+    class="search"
+    placeholder="Enter search term"
+    [(ngModel)]="searchTerm"
+    (change)="fetchResults()"
+  />
 
-    <ul class="card-container" >
-        <app-list-item [list]="audioList$" (moreOptions)="more($event)">
-        </app-list-item>
-    </ul>
+  <ul class="card-container">
+    <app-list-item [list]="audioList$" (moreOptions)="more($event)">
+    </app-list-item>
+  </ul>
 </div>

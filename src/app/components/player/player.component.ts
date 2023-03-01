@@ -1,18 +1,13 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import {
   BehaviorSubject,
   distinctUntilChanged,
-  first,
   fromEvent,
   interval,
-  last,
-  map,
   Subscription,
 } from "rxjs";
 
 import { QueueService } from "src/app/services/queue.service";
-// import { StoreService } from 'src/app/services/store.service';
 import SelectedAudioInterface from "src/app/interfaces/selected-audio.interface";
 import { NotificationService } from "src/app/services/notification.service";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
@@ -32,7 +27,6 @@ export class PlayerComponent {
   player = new Audio();
   source = interval(1000);
   timeSub: Subscription = Subscription.EMPTY;
-  // selectedAudio!: SelectedAudioInterface;
   isMinimised = true;
   isNextSong = true;
   isPreviousSong = false;
@@ -54,8 +48,6 @@ export class PlayerComponent {
     private matSheet: MatBottomSheet
   ) {
     this.queue.listenToSongChanges().subscribe((data) => {
-      // console.log(data);
-
       if (data) {
         this.selectedAudio = data;
         this.player.src = data.adaptiveFormats[1].url;
@@ -95,25 +87,6 @@ export class PlayerComponent {
     });
   }
 
-  //   this.queue.listenToSelectedAudio().subscribe(audio => {
-  //     this.selectedAudio = audio
-  //     if (audio.title) this.store.saveRecents(audio) // Saving the selected song in localStorage for 'Recently Played'
-  //   })
-
-  //   this.player.onerror = () => {
-  //     this.store.pop() // Removing from recents in case of an error playing the song
-  //     this.stopEmitting()
-  //     this.pause()
-  //     this.queue.stop();
-  //     console.log('error')
-
-  //     this.snackbar.open('This item cannot be played. Please try another one.', 'Dismiss', { duration: 4000 })
-  //     // console.log(this.player.readyState);
-
-  //   }
-
-  // }
-
   toggleAudio() {
     this.isPlaying.getValue() ? this.pause() : this.play();
   }
@@ -139,12 +112,11 @@ export class PlayerComponent {
   }
 
   previous() {
-    this.queue.previousQueuePos()
-    this.isPreviousSong = this.queue.isPrevious()
+    this.queue.previousQueuePos();
+    this.isPreviousSong = this.queue.isPrevious();
   }
 
   startEmitting() {
-    // this.timeSub
     if (this.timeSub.closed) {
       this.timeSub = this.source.subscribe(() => {
         console.log(this.player.currentTime, this.selectedAudio.lengthSeconds);
@@ -167,6 +139,6 @@ export class PlayerComponent {
   }
 
   showQueue() {
-    this.matSheet.open(DummyComponent)
+    this.matSheet.open(DummyComponent);
   }
 }

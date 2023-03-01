@@ -1,17 +1,17 @@
 interface ThumbnailInterface {
-    quality: string;
-    url: string;
-    width: number;
-    height: number;
+  quality: string;
+  url: string;
+  width: number;
+  height: number;
 }
 
 interface AudioInterface {
-    type: string;
-    title: string;
-    videoId: string;
-    author: string;
-    lengthSeconds: number;
-    videoThumbnails: ThumbnailInterface[]
+  type: string;
+  title: string;
+  videoId: string;
+  author: string;
+  lengthSeconds: number;
+  videoThumbnails: ThumbnailInterface[];
 }
 
-export default AudioInterface
+export default AudioInterface;
