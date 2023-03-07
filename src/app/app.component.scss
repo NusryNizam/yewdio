@@ -68,12 +68,18 @@ p {
 
   &__link {
     width: 100%;
+
+    @media (max-width: 1000px) {
+      height: 100%;
+      display: grid;
+      place-items: center;
+    }
   }
 
   &__button {
-    // flex: 1;
     width: 100%;
     align-content: stretch;
+    text-align: left;
     border-radius: 0;
     display: flex;
     min-height: 4em;
@@ -85,6 +91,10 @@ p {
       padding-left: 2em;
     }
   }
+}
+
+.bottom-icon {
+  color: #333333;
 }
 
 .active-link {
@@ -122,6 +132,14 @@ a:hover {
 
   @media (min-width: 1000px) {
     display: inherit;
+  }
+}
+
+.small-screen {
+  display: inherit;
+
+  @media (min-width: 1000px) {
+    display: none;
   }
 }
 

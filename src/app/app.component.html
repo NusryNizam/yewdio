@@ -1,46 +1,33 @@
 <div class="main-container">
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
-    <a
-      routerLink="/home"
-      routerLinkActive="active-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="toolbar__link"
-    >
-      <button mat-button class="toolbar__button">
-        <mat-icon>home</mat-icon><span class="big-screen">Home</span>
+    <a matRipple routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+      class="toolbar__link">
+      <button mat-button class="toolbar__button big-screen">
+        <mat-icon>home</mat-icon><span>Home</span>
       </button>
+      <mat-icon class="small-screen bottom-icon">home</mat-icon>
     </a>
 
-    <a
-      routerLink="/search"
-      routerLinkActive="active-link"
-      class="toolbar__link"
-    >
-      <button mat-button class="toolbar__button">
-        <mat-icon>search</mat-icon><span class="big-screen">Search</span>
+    <a matRipple routerLink="/search" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button big-screen">
+        <mat-icon>search</mat-icon><span>Search</span>
       </button>
+      <mat-icon class="small-screen bottom-icon">search</mat-icon>
     </a>
 
-    <a
-      routerLink="/playlists"
-      routerLinkActive="active-link"
-      class="toolbar__link"
-    >
-      <button mat-button class="toolbar__button">
-        <mat-icon>playlist_play</mat-icon
-        ><span class="big-screen">Playlists</span>
+    <a matRipple routerLink="/playlists" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button big-screen">
+        <mat-icon>playlist_play</mat-icon><span>Playlists</span>
       </button>
+      <mat-icon class="small-screen bottom-icon">playlist_play</mat-icon>
     </a>
 
-    <a
-      routerLink="/settings"
-      routerLinkActive="active-link"
-      class="toolbar__link"
-    >
-      <button mat-button class="toolbar__button">
-        <mat-icon>settings</mat-icon><span class="big-screen">Settings</span>
+    <a matRipple routerLink="/settings" routerLinkActive="active-link" class="toolbar__link">
+      <button mat-button class="toolbar__button big-screen">
+        <mat-icon>settings</mat-icon><span>Settings</span>
       </button>
+      <mat-icon class="small-screen bottom-icon">settings</mat-icon>
     </a>
   </div>
   <router-outlet style="display: none"></router-outlet>

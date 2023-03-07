@@ -40,7 +40,11 @@ input {
 }
 
 .container {
-  padding: 1em;
+  padding: 3em;
+
+  @media (max-width: 600px) {
+    padding: 1em;
+  }
 }
 
 .image-container {
