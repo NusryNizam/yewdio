@@ -13,8 +13,8 @@
 }
 
 .container {
-  padding-top: 4em;
   position: static;
+  padding: 2em;
 
   @media (max-width: 1000px) {
     position: absolute;
@@ -29,7 +29,15 @@
 
 .audio-info {
   text-align: center;
-  margin: 24px;
+  margin: 24px auto;
+  max-width: 180px;
+
+  > p {
+    min-width: 180px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .progress {
@@ -82,7 +90,9 @@
   background-position: center;
   background-size: cover;
   aspect-ratio: 1;
-  max-width: 380px;
+  max-width: 300px;
+  display: block;
+  margin: auto;
 
   img {
     width: 100%;

@@ -1,7 +1,8 @@
 :host {
   grid-column: 2/3;
+  grid-row: 1/-1;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     grid-column: 1/-1;
   }
 }
