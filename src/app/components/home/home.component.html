@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Recently Played</h1>
   <ul class="card-container">
+    <li *ngIf="!recents">
+      <p>Looks like you haven't played any items yet.       
+      </p>
+    </li>
     <li
       class="card"
       *ngFor="let recentAudio of recents | slice : 0 : 3"

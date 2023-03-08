@@ -11,3 +11,11 @@
     border-radius: 0;
   }
 }
+
+  .title > strong, .card-content > .channel {
+    display: block;
+    max-width: 220px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }

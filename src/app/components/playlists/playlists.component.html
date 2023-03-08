@@ -10,6 +10,9 @@
   />
 
   <ul class="card-container">
+    <li *ngIf="verb && playlists.length == 0">
+      <p>You don't have any playlists. </p>
+    </li>
     <li
       class="card"
       *ngFor="let item of playlists | slice : 0 : (verb ? 3 : playlists.length)"

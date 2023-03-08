@@ -30,6 +30,14 @@
 .audio-info {
   text-align: center;
   margin: 24px;
+  max-width: 180px;
+
+  > p {
+    min-width: 180px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .progress {

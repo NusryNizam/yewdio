@@ -12,3 +12,11 @@
   padding-bottom: 0px;
   margin-bottom: -16px;
 }
+
+.title > strong, .card-content > .channel {
+  display: block;
+  max-width: 220px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
