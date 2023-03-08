@@ -9,7 +9,7 @@
     grid-row: 2/3;
     background-color: white;
     border: 1px solid rgb(0 0 0 / 15%);
-    z-index: 1;
+    z-index: 3;
   }
 }
 
@@ -124,6 +124,7 @@
     align-items: center;
     position: static;
     flex-direction: row;
+    animation: settleDown 300ms ease-out 0ms;
 
     .hideWhenMinimised {
       display: none;
@@ -163,5 +164,31 @@
       margin-left: auto;
       display: block;
     }
+  }
+
+  .maximised {
+    animation: showUp 250ms ease-out 0ms;
+  }
+}
+
+@keyframes settleDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes showUp {
+  0% {
+    transform: translateY(300px);
+  }
+
+  100% {
+    transform: translateY(0px);
   }
 }

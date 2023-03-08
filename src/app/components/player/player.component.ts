@@ -12,6 +12,7 @@ import SelectedAudioInterface from "src/app/interfaces/selected-audio.interface"
 import { NotificationService } from "src/app/services/notification.service";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { DummyComponent } from "../dummy/dummy.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-player",
@@ -45,13 +46,15 @@ export class PlayerComponent {
   constructor(
     private queue: QueueService,
     private notification: NotificationService,
-    private matSheet: MatBottomSheet
+    private matSheet: MatBottomSheet,
+    private title: Title
   ) {
     this.queue.listenToSongChanges().subscribe((data) => {
       if (data) {
         this.selectedAudio = data;
         this.player.src = data.adaptiveFormats[1].url;
         this.play();
+        this.title.setTitle(data.title)
       }
     });
 

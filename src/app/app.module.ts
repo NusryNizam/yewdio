@@ -18,6 +18,7 @@ import { DummyComponent } from "./components/dummy/dummy.component";
 import { MAT_BOTTOM_SHEET_DATA } from "@angular/material/bottom-sheet";
 import { PlaylistSheetComponent } from "./components/playlist-sheet/playlist-sheet.component";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { DurationPipe } from './duration.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ListItemComponent,
     DummyComponent,
     PlaylistSheetComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div
-  [class]="isMinimised ? 'minimised container' : 'container'"
+  [class]="isMinimised ? 'minimised container' : 'maximised container'"
   #playerRef
   id="player"
 >
@@ -25,9 +25,9 @@
 
   <div class="audio-info">
     <p class="">
-      <strong>{{ selectedAudio.title || "Song Title" }}</strong>
+      <strong>{{ selectedAudio.title || "--" }}</strong>
     </p>
-    <p class="">{{ selectedAudio.author || "Author" }}</p>
+    <p class="">{{ selectedAudio.author || "" }}</p>
   </div>
   <progress
     id="progress"
@@ -36,13 +36,15 @@
     [max]="selectedAudio.lengthSeconds"
   ></progress>
   <p class="duration">
-    {{ this.currentTime.getValue() / 60 | number : "2.0-0" }}:{{
+    <!-- {{ this.currentTime.getValue() / 60 | number : "2.0-0" }}:{{
       this.currentTime.getValue() % 60 | number : "2.0-0"
     }}
     /
     {{ selectedAudio.lengthSeconds / 60 | number : "2.0-0" }}:{{
       selectedAudio.lengthSeconds % 60 | number : "2.0-0"
-    }}
+    }} -->
+
+    {{this.currentTime.getValue() | duration}}/{{selectedAudio.lengthSeconds | duration}}
   </p>
 
   <div class="controls">
