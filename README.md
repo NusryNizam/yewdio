@@ -9,13 +9,14 @@ This is a work in progress ⚠️
 - Play them as Audio ✔️ <br>
 - Music player and controls ✔️ <br>
 - Add items to playlists ✔️ <br>
+- Add PWA support ✔️ <br>
+
 
 #### To-Dos
 - Edit Playlists ❌ <br>
 - Settings ❌ <br>
 - Dark Mode ❌ <br>
 - View the current queue ❌
-- Add PWA support ❌ <br>
 
 and more visual improvements planned.
 

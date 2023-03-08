@@ -13,8 +13,8 @@
 }
 
 .container {
-  padding-top: 4em;
   position: static;
+  padding: 2em;
 
   @media (max-width: 1000px) {
     position: absolute;
@@ -82,7 +82,9 @@
   background-position: center;
   background-size: cover;
   aspect-ratio: 1;
-  max-width: 380px;
+  max-width: 300px;
+  display: block;
+  margin: auto;
 
   img {
     width: 100%;
