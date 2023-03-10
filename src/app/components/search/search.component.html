@@ -1,20 +1,14 @@
 <div class="container">
   <h1>Search</h1>
   <mat-form-field>
-  <input matInput
-    type="text"
-    name="search"
-    id="search"
-    class="search"
-    placeholder="Enter search term"
-    [(ngModel)]="searchTerm"
-    (change)="fetchResults()"
-  />
-  <button mat-icon-button matSuffix *ngIf="searchTerm && !(isLoading$ | async)" (click)="searchTerm = ''">
-  <mat-icon>close</mat-icon>
-</button>
-<mat-spinner *ngIf="isLoading$ | async" matSuffix class="search-spinner"></mat-spinner>
-</mat-form-field>
+    <input matInput type="text" name="search" id="search" class="search" placeholder="Enter search term"
+      [(ngModel)]="searchTerm" (change)="fetchResults()" />
+    <button mat-icon-button matSuffix *ngIf="searchTerm && !(isLoading$ | async)" (click)="searchTerm = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-icon matSuffix *ngIf="!searchTerm && !(isLoading$ | async)">search</mat-icon>
+    <mat-spinner *ngIf="isLoading$ | async" matSuffix class="search-spinner"></mat-spinner>
+  </mat-form-field>
 
   <ul class="card-container">
     <app-list-item [list]="audioList$" (moreOptions)="more($event)">
