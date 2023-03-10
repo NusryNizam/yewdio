@@ -18,6 +18,7 @@ import { ListItemComponent } from "../list-item/list-item.component";
 export class SearchComponent {
   searchTerm: string = "";
   audioList$ = new BehaviorSubject<AudioInterface[]>([]);
+  isLoading$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private data: DataService,
@@ -31,10 +32,13 @@ export class SearchComponent {
     this.data.searchTerm$.subscribe((term: string) => {
       this.searchTerm = term;
     });
+
+    this.isLoading$ = this.data.isSearching()
   }
 
   fetchResults() {
-    this.data.getSearchResults2(this.searchTerm);
+    this.data.getSearchResults2(this.searchTerm)
+    // this.isLoading$.next(true)
   }
 
   more(audio: AudioInterface) {

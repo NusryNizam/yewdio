@@ -13,6 +13,7 @@ export class DataService {
 
   private audioList$ = new BehaviorSubject<AudioInterface[]>([]);
   public searchTerm$ = new BehaviorSubject<string>("");
+  private isSearching$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private queue: QueueService) {}
 
@@ -23,12 +24,20 @@ export class DataService {
     );
   }
 
+  isSearching() {
+    return this.isSearching$
+  }
+
   getSearchResults2(searchTerm: string): void {
+    this.isSearching$.next(true)
     searchTerm = searchTerm.trim().toLowerCase();
     this.searchTerm$.next(searchTerm);
     this.http
       .get<AudioInterface[]>(`${this._url}search?q=${searchTerm}`)
-      .subscribe((audioList) => this.audioList$.next(audioList));
+      .subscribe((audioList) => {
+        this.audioList$.next(audioList)
+        this.isSearching$.next(false)
+      });
   }
 
   getResultAudio() {
