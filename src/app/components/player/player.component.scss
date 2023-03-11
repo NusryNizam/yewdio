@@ -1,14 +1,16 @@
+@import '../../../variables.scss';
+
 :host {
   grid-column: 3/4;
   grid-row: 1/-1;
-  background-color: #e8e8e8;
+  background-color: $bg-secondary-color;
   padding: 0;
 
   @media (max-width: 1000px) {
     grid-column: 1/-1;
     grid-row: 2/3;
     background-color: white;
-    border: 1px solid rgb(0 0 0 / 15%);
+    border: 1px solid $tp-border;
     z-index: 3;
   }
 }
@@ -44,7 +46,7 @@
 .progress {
   accent-color: black;
   color: black;
-  background-color: #d5d5d5;
+  background-color: $progress-bar;
   height: 4px;
   border-radius: 2px;
   border: none;
@@ -57,11 +59,11 @@
 
 #toggle-play {
   box-shadow: none;
-  background-color: #0094ff;
-  color: #e8e8e8;
+  background-color: $accent-color;
+  color: $bg-secondary-color;
 
   &:disabled {
-    background-color: rgb(178, 176, 176);
+    background-color: $disabled;
     cursor: not-allowed;
   }
 }
