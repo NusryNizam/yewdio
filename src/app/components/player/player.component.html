@@ -36,15 +36,9 @@
     [max]="selectedAudio.lengthSeconds"
   ></progress>
   <p class="duration">
-    <!-- {{ this.currentTime.getValue() / 60 | number : "2.0-0" }}:{{
-      this.currentTime.getValue() % 60 | number : "2.0-0"
-    }}
+    {{this.currentTime.getValue() | duration:'M' | number: '2.0-0'}}:{{this.currentTime.getValue() | duration:'S' | number: '2.0-0'}}
     /
-    {{ selectedAudio.lengthSeconds / 60 | number : "2.0-0" }}:{{
-      selectedAudio.lengthSeconds % 60 | number : "2.0-0"
-    }} -->
-
-    {{this.currentTime.getValue() | duration}}/{{selectedAudio.lengthSeconds | duration}}
+    {{selectedAudio.lengthSeconds | duration:'M' | number: '2.0-0'}}:{{selectedAudio.lengthSeconds | duration:'S' | number: '2.0-0'}}
   </p>
 
   <div class="controls">
