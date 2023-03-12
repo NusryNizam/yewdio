@@ -2,6 +2,8 @@
 ### Listen to Youtube as audio in this web app.
 https://yewdio.netlify.app
 
+![Screenshot](./src/assets/cover.png)
+
 This is a work in progress ⚠️
 
 #### Works
