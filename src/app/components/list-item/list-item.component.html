@@ -13,9 +13,7 @@
         [alt]="audio.title"
       />
       <div class="duration">
-        {{ audio.lengthSeconds / 60 | number : "2.0-0" }}:{{
-          audio.lengthSeconds % 60 | number : "2.0-0"
-        }}
+        {{audio.lengthSeconds | duration:'M' | number: '2.0-0'}}:{{audio.lengthSeconds | duration:'S' | number: '2.0-0'}}
       </div>
     </div>
     <div class="card-content">
