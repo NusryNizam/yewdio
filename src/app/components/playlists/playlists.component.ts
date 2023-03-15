@@ -12,7 +12,9 @@ import { StorageService } from "src/app/services/storage.service";
 })
 export class PlaylistsComponent {
   playlists: Array<{ name: string; data: AudioInterface[] }> = [];
+  filteredPlaylists: Array<{ name: string; data: AudioInterface[] }> = [];
   queuePosition = 0;
+  searchTerm: string = "";
 
   @Input() verb = "";
 
@@ -21,7 +23,8 @@ export class PlaylistsComponent {
     private queueService: QueueService,
     private dataService: DataService
   ) {
-    this.playlists = this.storageService.getAllPlaylists();
+    this.filteredPlaylists = this.playlists =
+      this.storageService.getAllPlaylists();
 
     this.queueService
       .getQueuePos()
@@ -54,5 +57,16 @@ export class PlaylistsComponent {
     this.dataService.getVideoDetails(videoId).subscribe((result) => {
       this.queueService.setAudio(result);
     });
+  }
+
+  searchPlaylists() {
+    this.filteredPlaylists = this.playlists.filter((item) =>
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  clear() {
+    this.searchTerm = "";
+    this.filteredPlaylists = this.playlists;
   }
 }

@@ -1,40 +1,26 @@
 <div class="container">
   <h1>{{ verb }} Playlists</h1>
-  <input
-    *ngIf="!verb"
-    type="text"
-    name="search"
-    id="search"
-    class="search"
-    placeholder="Search your playlists"
-  />
+
+  <mat-form-field *ngIf="!verb">
+    <input matInput type="text" name="search" id="search" class="search" placeholder="Search your playlists"
+      [(ngModel)]="searchTerm" (keyup)="searchPlaylists()" />
+    <button mat-icon-button matSuffix *ngIf="searchTerm" (click)="clear()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-icon matSuffix *ngIf="!searchTerm">search</mat-icon>
+    <!-- <mat-spinner matSuffix class="search-spinner"></mat-spinner> -->
+  </mat-form-field>
 
   <ul class="card-container">
     <li *ngIf="verb && playlists.length == 0">
       <p>You don't have any playlists. </p>
     </li>
-    <li
-      class="card"
-      *ngFor="let item of playlists | slice : 0 : (verb ? 3 : playlists.length)"
-      (click)="addToQueue(item.name, item.data)"
-      matRipple
-    >
+    <li class="card" *ngFor="let item of filteredPlaylists | slice : 0 : (verb ? 3 : playlists.length)"
+      (click)="addToQueue(item.name, item.data)" matRipple>
       <div class="image-container image-container-playlist">
-        <img
-          class="card-image image-3"
-          src="https://via.placeholder.com/128x72.webp"
-          alt="placeholder"
-        />
-        <img
-          class="card-image image-2"
-          src="https://via.placeholder.com/128x72.webp"
-          alt="placeholder"
-        />
-        <img
-          class="card-image image-1"
-          src="https://via.placeholder.com/128x72.webp"
-          alt="placeholder"
-        />
+        <img class="card-image image-3" src="https://via.placeholder.com/128x72.webp" alt="placeholder" />
+        <img class="card-image image-2" src="https://via.placeholder.com/128x72.webp" alt="placeholder" />
+        <img class="card-image image-1" src="https://via.placeholder.com/128x72.webp" alt="placeholder" />
       </div>
       <div class="card-content">
         <p class="name">
