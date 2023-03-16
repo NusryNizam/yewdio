@@ -2,6 +2,8 @@
   grid-column: 2/3;
   grid-row: 1/-1;
   overflow: auto;
+  background-color: var(--bg-color);
+  color: var(--font-color);
 
   @media (max-width: 1000px) {
     grid-column: 1/-1;

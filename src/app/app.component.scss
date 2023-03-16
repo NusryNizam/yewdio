@@ -32,7 +32,8 @@ p {
   display: flex;
   align-items: center;
   // background-color: white;
-  color: white;
+  background-color: var(--bg-secondary-color);
+  color: var(--font-color);
   font-weight: 600;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +45,8 @@ p {
 
   .mat-icon {
     margin-right: 0;
+    color: var(--font-color);
+
   }
 
   @media (min-width: 1000px) {
@@ -81,6 +84,7 @@ p {
     min-height: 4em;
     font-family: Inter;
     font-weight: 400;
+    color: var(--font-color) !important;
 
     @media (min-width: 1000px) {
       justify-content: flex-start;
@@ -94,7 +98,7 @@ p {
 }
 
 .active-link {
-  background-color: $white;
+  background-color: var(--card-color);
 
   @media (max-width: 1000px) {
     .mat-icon {

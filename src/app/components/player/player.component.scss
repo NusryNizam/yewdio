@@ -3,7 +3,7 @@
 :host {
   grid-column: 3/4;
   grid-row: 1/-1;
-  // background-color: $bg-secondary-color;
+  background-color: var(--bg-secondary-color);
   border-left: 1px solid $tp-border;
   box-shadow: -2px 0px 8px $shadow;
   padding: 0;
@@ -11,8 +11,8 @@
   @media (max-width: 1000px) {
     grid-column: 1/-1;
     grid-row: 2/3;
-    background-color: white;
-    border: 1px solid $tp-border;
+    background-color: var(--bg-color);
+    border: 1px solid var(--tp-border);
     z-index: 3;
   }
 }
@@ -27,7 +27,7 @@
     align-items: center;
     flex-direction: column;
     inset: 0 0 0 0;
-    background-color: white;
+    background-color: var(--bg-color);
     z-index: 2;
   }
 }
@@ -129,6 +129,7 @@
     position: static;
     flex-direction: row;
     animation: settleDown 300ms ease-out 0ms;
+    background-color: var(--bg-color);
 
     .hideWhenMinimised {
       display: none;
@@ -156,6 +157,7 @@
 
     .audio-info {
       text-align: left;
+      color: var(--font-color);
     }
 
     .progress,
@@ -168,10 +170,28 @@
       margin-left: auto;
       display: block;
     }
+
+    
+
+    
   }
 
   .maximised {
     animation: showUp 250ms ease-out 0ms;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mat-icon {
+    color: var(--white);
+  }
+
+  button:disabled .mat-icon {
+    color: var(--disabled);
+  }
+
+  .audio-info {
+    color: var(--font-color);
   }
 }
 
