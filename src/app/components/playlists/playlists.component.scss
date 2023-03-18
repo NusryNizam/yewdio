@@ -11,6 +11,13 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .mat-icon {
+    // Icon color for the search box
+    color: var(--bg-color);
+  }
+}
+
 // .search {
 //   width: calc(100% - 2em);
 //   padding: 10px 12px;

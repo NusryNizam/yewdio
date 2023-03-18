@@ -16,3 +16,10 @@
   height: 28px !important;
   margin-inline: 10px !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  .mat-icon {
+    // Icon color for the search box
+    color: var(--bg-color);
+  }
+}

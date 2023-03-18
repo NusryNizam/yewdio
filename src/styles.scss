@@ -150,6 +150,11 @@ input {
   }
 }
 
+.card-content > .channel {
+  color: var(--card-secondary-text);
+  font-size: 14px;
+  }
+
 .search {
   width: calc(100% - 2em);
   padding: 10px 12px;
