@@ -12,12 +12,13 @@ This is a work in progress ⚠️
 - Music player and controls ✔️ <br>
 - Add items to playlists ✔️ <br>
 - Add PWA support ✔️ <br>
+- Dark Mode ✔️ <br>
+
 
 
 #### To-Dos
 - Edit Playlists ❌ <br>
 - Settings ❌ <br>
-- Dark Mode ❌ <br>
 - View the current queue ❌
 
 and more visual improvements planned.
