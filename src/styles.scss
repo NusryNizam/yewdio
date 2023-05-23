@@ -121,6 +121,7 @@ input {
     &-content {
       padding: 6px 8px;
       font-size: 16px;
+      max-width: calc( 100% - 120px );
     }
 
     .year {
