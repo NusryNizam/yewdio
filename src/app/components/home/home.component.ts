@@ -40,4 +40,9 @@ export class HomeComponent implements OnInit {
       this.queueService.setAudio(result);
     });
   }
+
+  clearHistory() {
+    this.recents = []
+    this.storageService.clearRecents()
+  }
 }

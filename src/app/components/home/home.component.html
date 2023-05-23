@@ -1,9 +1,14 @@
 <div class="container">
-  <h1>Play History</h1>
+  <div class="page-title-container">
+    <h1>Play History</h1>
+    <button mat-flat-button (click)="clearHistory()"><mat-icon>filter_list</mat-icon> Clear History</button>
+  </div>
   <ul class="card-container">
-    <li *ngIf="!recents">
+    <li *ngIf="recents.length === 0">
       <p>Looks like you haven't played any items yet.       
       </p>
+      <br>
+      <br>
     </li>
     <li
       class="card"

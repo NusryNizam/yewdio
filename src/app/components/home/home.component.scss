@@ -23,4 +23,29 @@
   white-space: nowrap;
 }
 
+.page-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  button {
+    padding: 0.5rem;
+    background-color: var(--transparent);
+    border: none;
+    border-radius: 4px;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-family: 'Inter';
+    font-weight: normal;
+
+    &:active {
+      background-color: var(--accent-color);
+      color: var(--white);
+    }
+  }
+}
 

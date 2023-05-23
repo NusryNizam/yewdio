@@ -76,6 +76,10 @@ export class StorageService {
     if (recents) return JSON.parse(recents);
   }
 
+  clearRecents() {
+    localStorage.setItem('recents',JSON.stringify([]))
+  }
+
   ifExists(name: string, videoId: string): boolean {
     let items: AudioInterface[] | null = this.getPlaylist(name);
     if (items) {
