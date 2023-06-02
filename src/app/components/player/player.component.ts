@@ -55,6 +55,11 @@ export class PlayerComponent {
         this.player.src = data.adaptiveFormats[1].url;
         this.play();
         this.title.setTitle(data.title)
+        navigator.mediaSession.metadata = new MediaMetadata({
+          artist: data.author,
+          title: data.title,
+          artwork: [{src: data.videoThumbnails[2].url}],
+        })
       }
     });
 
