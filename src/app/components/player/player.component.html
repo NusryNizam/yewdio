@@ -59,6 +59,15 @@
     </button>
   </div>
 
+  <div class="controls">
+    <button mat-icon-button (click)="rewindTen()" [disabled]="player.readyState < 3">
+      <mat-icon>replay_10</mat-icon>
+    </button>
+    <button mat-icon-button (click)="skipTen()" [disabled]="player.readyState < 3">
+      <mat-icon>forward_10</mat-icon>
+    </button>
+  </div>
+
   <!-- <div class="controls">
     <button mat-button (click)="showQueue()">
       <mat-icon>playlist_play</mat-icon>

@@ -127,7 +127,7 @@ export class PlayerComponent {
   startEmitting() {
     if (this.timeSub.closed) {
       this.timeSub = this.source.subscribe(() => {
-        console.log(this.player.currentTime, this.selectedAudio.lengthSeconds);
+        // console.log(this.player.currentTime, this.selectedAudio.lengthSeconds);
 
         this.currentTime.next(this.player.currentTime);
         if (this.player.ended) {
@@ -148,5 +148,16 @@ export class PlayerComponent {
 
   showQueue() {
     this.matSheet.open(DummyComponent);
+  }
+
+  skipTen() {
+    console.log(this.player.readyState);
+    
+    this.player.currentTime += 10
+    this.play()
+  }
+  rewindTen() {
+    this.player.currentTime -= 10
+    this.play()
   }
 }
