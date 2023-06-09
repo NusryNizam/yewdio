@@ -9,8 +9,8 @@ import { QueueService } from "./queue.service";
   providedIn: "root",
 })
 export class DataService {
-  // private _url = `https://vid.priv.au/api/v1/`;
-  private _url = `https://yt.funami.tech/api/v1/`;
+  private _url = `https://vid.priv.au/api/v1/`;
+  // private _url = `https://yt.funami.tech/api/v1/`;
 
   private audioList$ = new BehaviorSubject<AudioInterface[]>([]);
   public searchTerm$ = new BehaviorSubject<string>("");
