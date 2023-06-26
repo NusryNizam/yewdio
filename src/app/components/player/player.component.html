@@ -36,6 +36,7 @@
     [max]="selectedAudio.lengthSeconds"
   ></progress>
   <p class="duration">
+    <!-- NOTE: This part even if not super complicated seems a bit long for a template. Maybe consider binding it with a variable?  -->
     {{this.currentTime.getValue() | duration:'M' | number: '2.0-0'}}:{{this.currentTime.getValue() | duration:'S' | number: '2.0-0'}}
     /
     {{selectedAudio.lengthSeconds | duration:'M' | number: '2.0-0'}}:{{selectedAudio.lengthSeconds | duration:'S' | number: '2.0-0'}}

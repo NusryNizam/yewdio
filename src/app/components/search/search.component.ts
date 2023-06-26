@@ -29,6 +29,7 @@ export class SearchComponent {
       this.audioList$.next(results);
     });
 
+    // NOTE: Consider unsubscribing in ngOnDestroy
     this.data.searchTerm$.subscribe((term: string) => {
       this.searchTerm = term;
     });
