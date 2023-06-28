@@ -49,6 +49,7 @@ export class PlayerComponent {
     private matSheet: MatBottomSheet,
     private title: Title
   ) {
+    // NOTE: Consider unsubscribing in ngOnDestroy
     this.queue.listenToSongChanges().subscribe((data) => {
       if (data) {
         this.selectedAudio = data;

@@ -4,7 +4,8 @@
     <button mat-flat-button (click)="clearHistory()"><mat-icon>filter_list</mat-icon> Clear History</button>
   </div>
   <ul class="card-container">
-    <li *ngIf="recents.length === 0">
+    <!-- When opening for the first time recents variable is undefined -->
+    <li *ngIf="recents?.length === 0">
       <p>Looks like you haven't played any items yet.       
       </p>
       <br>

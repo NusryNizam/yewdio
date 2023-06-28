@@ -5,6 +5,7 @@
   (click)="getVideoDetails(audio.videoId)"
   (contextmenu)="rightClick($event, audio)"
 >
+<!-- NOTE: Usually its recommended to use strict equality '===' -->
   <ng-container *ngIf="audio.type == 'video'">
     <div class="image-container">
       <img
@@ -26,6 +27,7 @@
 </li>
 <ul class="card-container" *ngIf="!isEmpty">
   <li class="card">
+    <!-- The same as above -->
     <ng-container *ngIf="data.type == 'video'">
       <div class="image-container">
         <img
