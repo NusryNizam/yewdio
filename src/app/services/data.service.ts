@@ -4,13 +4,13 @@ import { BehaviorSubject, Observable } from "rxjs";
 import AudioInterface from "../interfaces/audio.interface";
 import DetailedAudioInterface from "../interfaces/detailed-audio.interface";
 import { QueueService } from "./queue.service";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class DataService {
-  private _url = `https://vid.priv.au/api/v1/`;
-  // private _url = `https://yt.funami.tech/api/v1/`;
+  private _url = environment.apiURL
 
   private audioList$ = new BehaviorSubject<AudioInterface[]>([]);
   public searchTerm$ = new BehaviorSubject<string>("");
