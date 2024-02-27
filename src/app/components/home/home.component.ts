@@ -27,8 +27,6 @@ export class HomeComponent implements OnInit {
     private dataService: DataService
   ) {
     this.playlists = this.storageService.getAllPlaylists();
-    this.recents = this.storageService.getRecents();
-    console.log(this.recents);
   }
 
   ngOnInit(): void {}
@@ -41,8 +39,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  clearHistory() {
-    this.recents = []
-    this.storageService.clearRecents()
-  }
 }

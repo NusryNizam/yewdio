@@ -2,7 +2,7 @@
   <h1>Search</h1>
   <mat-form-field>
     <input matInput type="text" name="search" id="search" class="search" placeholder="Enter search term"
-      [(ngModel)]="searchTerm" (change)="fetchResults()" />
+      [(ngModel)]="searchTerm" (input)="(onSearchInput($event))" />
     <button mat-icon-button matSuffix *ngIf="searchTerm && !(isLoading$ | async)" (click)="searchTerm = ''">
       <mat-icon>close</mat-icon>
     </button>
