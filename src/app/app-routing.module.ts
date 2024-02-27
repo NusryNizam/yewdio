@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: "home", title: "Home | Yewdio", component: HomeComponent },
   { path: "search", title: "Search", component: SearchComponent },
   { path: "playlists", title: "Playlists", component: PlaylistsComponent },
-  { path: "settings", title: "Settings", component: SettingsComponent },
+  // { path: "settings", title: "Settings", component: SettingsComponent },
 ];
 
 @NgModule({

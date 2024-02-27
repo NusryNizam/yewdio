@@ -36,7 +36,6 @@ export class ListItemComponent {
     this.queueService.resetQueuePos();
     this.dataService.getVideoDetails(videoId).subscribe((result) => {
       this.queueService.setAudio(result);
-      this.storageService.addToRecents(result);
     });
   }
 
