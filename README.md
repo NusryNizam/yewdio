@@ -1,6 +1,6 @@
 # Yewdio - <i>Youtube Audio</i>
 ### Listen to Youtube as audio in this web app.
-https://yewdio.netlify.app
+https://yewdio-angular.netlify.app
 
 ![Screenshot](./src/assets/cover.png)
 
